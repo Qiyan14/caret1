@@ -4,7 +4,7 @@ library(plyr)
 library(recipes)
 library(dplyr)
 
-model <- "LogitBoost"
+model <- "LogitBoostReg"
 
 
 
@@ -31,14 +31,14 @@ cctrlR <- trainControl(method = "cv", number = 3, returnResamp = "all", search =
 
 set.seed(849)
 test_class_cv_model <- train(trainX, trainY, 
-                             method = "LogitBoost", 
+                             method = "LogitBoostReg", 
                              trControl = cctrl1,
                              metric = "ROC", 
                              preProc = c("center", "scale"))
 
 set.seed(849)
 test_class_cv_form <- train(Class ~ ., data = training, 
-                            method = "LogitBoost", 
+                            method = "LogitBoostReg", 
                             trControl = cctrl1,
                             metric = "ROC", 
                             preProc = c("center", "scale"))
@@ -50,20 +50,20 @@ test_class_prob_form <- predict(test_class_cv_form, testing[, -ncol(testing)], t
 
 set.seed(849)
 test_class_rand <- train(trainX, trainY, 
-                         method = "LogitBoost", 
+                         method = "LogitBoostReg", 
                          trControl = cctrlR,
                          tuneLength = 4)
 
 set.seed(849)
 test_class_loo_model <- train(trainX, trainY, 
-                            method = "LogitBoost", 
+                            method = "LogitBoostReg", 
                             trControl = cctrl2,
                             metric = "ROC", 
                             preProc = c("center", "scale"))
 
 set.seed(849)
 test_class_none_model <- train(trainX, trainY, 
-                               method = "LogitBoost", 
+                               method = "LogitBoostReg", 
                                trControl = cctrl3,
                                tuneLength = 1,
                                metric = "ROC", 
@@ -75,7 +75,7 @@ test_class_none_prob <- predict(test_class_none_model, testing[, -ncol(testing)]
 set.seed(849)
 test_class_rec <- train(x = rec_cls,
                         data = training,
-                        method = "LogitBoost", 
+                        method = "LogitBoostReg", 
                         trControl = cctrl1,
                         metric = "ROC")
 
