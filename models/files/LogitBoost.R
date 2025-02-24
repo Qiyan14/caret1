@@ -1,5 +1,5 @@
 modelInfo <- list(label = "Boosted Logistic Regression",
-                  library = "caTools",
+                  library = "TestingTools",
                   loop = function(grid) {            
                     ## Get the largest value of ncomp to fit the "full" model
                     loop <- grid[which.max(grid$nIter),,drop = FALSE]
@@ -26,11 +26,11 @@ modelInfo <- list(label = "Boosted Logistic Regression",
                   fit = function(x, y, wts, param, lev, last, classProbs, ...) {
                     ## There is another package with a function called `LogitBoost`
                     ## so we call using the namespace
-                    caTools::LogitBoost(as.matrix(x), y, nIter = param$nIter)
+                    TestingTools::LogitBoost(as.matrix(x), y, nIter = param$nIter)
                   },
                   predict = function(modelFit, newdata, submodels = NULL) {
                     ## This model was fit with the maximum value of nIter
-                    out <- caTools::predict.LogitBoost(modelFit, newdata, type="class")
+                    out <- TestingTools::predict.LogitBoost(modelFit, newdata, type="class")
                     ## submodels contains one of the elements of 'submodels'. In this 
                     ## case, 'submodels' is a data frame with the other values of
                     ## nIter. We loop over these to get the other predictions.
@@ -43,7 +43,7 @@ modelInfo <- list(label = "Boosted Logistic Regression",
                       
                       for(j in seq(along = submodels$nIter))
                       {
-                        out[[j+1]] <- caTools::predict.LogitBoost(modelFit,
+                        out[[j+1]] <- TestingTools::predict.LogitBoost(modelFit,
                                                                   newdata,
                                                                   nIter = submodels$nIter[j])
                       }
@@ -51,7 +51,7 @@ modelInfo <- list(label = "Boosted Logistic Regression",
                     out                   
                   },
                   prob = function(modelFit, newdata, submodels = NULL) {
-                    out <- caTools::predict.LogitBoost(modelFit, newdata, type = "raw")
+                    out <- TestingTools::predict.LogitBoost(modelFit, newdata, type = "raw")
                     ## I've seen them not be on [0, 1]
                     out <- t(apply(out, 1, function(x) x/sum(x)))
                     if(!is.null(submodels))
@@ -61,7 +61,7 @@ modelInfo <- list(label = "Boosted Logistic Regression",
                       
                       for(j in seq(along = submodels$nIter))
                       {                           
-                        tmpProb <- caTools::predict.LogitBoost(modelFit,
+                        tmpProb <- TestingTools::predict.LogitBoost(modelFit,
                                                                newdata,
                                                                type = "raw",
                                                                nIter = submodels$nIter[j])
