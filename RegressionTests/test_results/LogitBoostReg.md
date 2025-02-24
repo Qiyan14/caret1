@@ -1,4 +1,4 @@
-Boosted Logistic Regression (`LogitBoostReg`)
+Boosted Logistic RegularizationRegression (`LogitBoostReg`)
 ===== 
 
 There are regression tests to compare model results between different versions of `caret` and the individual packages. These test evaluate whether consistent results can be obtained. The code used to generate the objects that are compared can be found [here]
@@ -9,7 +9,7 @@ Old:
 
  * x86_64-apple-darwin13.4.0 (64-bit)
  * R version 3.3.3 (2017-03-06)
- * `caret` (6.0-73), `caTools` (1.17.1)
+ * `caret` (6.0-73), `TestingTools` (1.17.1)
  * tested on 2017-04-12 at 20:56. 
  * total test time: 9.5s
 
@@ -18,7 +18,7 @@ New:
 
  * x86_64-apple-darwin13.4.0 (64-bit)
  * R version 3.3.3 (2017-03-06)
- * `caret` (6.0-75), `caTools` (1.17.1)
+ * `caret` (6.0-75), `TestingTools` (1.17.1)
  * tested on 2017-04-11 at 21:33. 
  * total test time: 6.9s
 
