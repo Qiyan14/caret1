@@ -1,9 +1,7 @@
 Boosted Logistic Regression (`LogitBoostReg`)
 ===== 
 
-There are regression tests to compare model results between different versions of `caret` and the individual packages. These test evaluate whether consistent results can be obtained. The code used to generate the objects that are compared can be found [here](https://github.com/topepo/caret/blob/master/RegressionTests/Code/LogitBoost.R).
-A [history of commits](https://github.com/topepo/caret/commits/master/models/files/LogitBoost.R) for the model code is also available
-
+There are regression tests to compare model results between different versions of `caret` and the individual packages. These test evaluate whether consistent results can be obtained. The code used to generate the objects that are compared can be found [here]
 Testing Information:
 ---------
 
