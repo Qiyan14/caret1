@@ -1,4 +1,4 @@
-modelInfo <- list(label = "Boosted Logistic Regression",
+modelInfo <- list(label = "Boosted Logistic Regularization Regression",
                   library = "TestingTools",
                   loop = function(grid) {            
                     ## Get the largest value of ncomp to fit the "full" model
