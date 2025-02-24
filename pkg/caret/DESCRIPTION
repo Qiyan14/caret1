@@ -57,8 +57,6 @@ Authors@R:
 Description: Misc functions for training and plotting classification and
     regression models.
 License: GPL (>= 2)
-URL: https://github.com/topepo/caret/
-BugReports: https://github.com/topepo/caret/issues
 Depends:
     ggplot2,
     lattice (>= 0.20),
