@@ -4,12 +4,12 @@ modelInfo <- list(label = "Boosted Logistic Regularization Regression",
                     ## Get the largest value of ncomp to fit the "full" model
                     loop <- grid[which.max(grid$nIter),,drop = FALSE]
                     
-                    submodels1 <- grid[-which.max(grid$nIter),,drop = FALSE]
+                    submodels <- grid[-which.max(grid$nIter),,drop = FALSE]
                     
                     ## This needs to be excased in a list in case there are more
                     ## than one tuning parameter
-                    submodels <- list(submodels1)  
-                    list(loop = loop, submodels1 = submodels1)
+                    submodels <- list(submodels)  
+                    list(loop = loop, submodels = submodels)
                   },
                   type = "Classification",
                   parameters = data.frame(parameter = 'nIter',
