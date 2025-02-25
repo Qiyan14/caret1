@@ -2,12 +2,12 @@
 % Please edit documentation in R/createModel.R, R/misc.R,
 %   R/predictionFunction.R, R/predictors.R, R/probFunction.R,
 %   R/resampleWrapper.R, R/selectByFilter.R, R/sortImp.R, R/workflows.R
-\name{caret-internal}
-\alias{caret-internal}
+\name{terac-internal}
+\alias{terac-internal}
 \alias{createModel}
 \alias{resampleWrapper}
 \alias{sortImp}
-\alias{caretTheme}
+\alias{teracTheme}
 \alias{progress}
 \alias{hasTerms}
 \alias{predictionFunction}
@@ -77,6 +77,6 @@ expandParameters(fixed, seq)
 Internal functions
 }
 \author{
-Max Kuhn, but \code{caretTheme} uses an expanded grid of the "Blues" palette designed by Cynthia Brewer and Mark Harrower
+Max Kuhn, but \code{teracTheme} uses an expanded grid of the "Blues" palette designed by Cynthia Brewer and Mark Harrower
 }
 \keyword{internal}
