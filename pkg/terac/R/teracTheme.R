@@ -1,5 +1,5 @@
 #' @export
-caretTheme <- function() 
+teracTheme <- function() 
    list(
       plot.polygon = list(alpha = 1, col = "aliceblue", border = "black",
          lty = 1, lwd = 1),
