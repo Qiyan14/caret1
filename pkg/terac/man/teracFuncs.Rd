@@ -5,7 +5,7 @@
 \alias{pickSizeBest}
 \alias{pickSizeTolerance}
 \alias{pickVars}
-\alias{caretFuncs}
+\alias{teracFuncs}
 \alias{lmFuncs}
 \alias{rfFuncs}
 \alias{gamFuncs}
@@ -38,7 +38,7 @@ pickSizeTolerance(x, metric, tol = 1.5, maximize)
 
 pickVars(y, size)
 
-caretFuncs
+teracFuncs
 
 ldaFuncs
 
