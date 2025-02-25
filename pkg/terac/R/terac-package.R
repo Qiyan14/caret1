@@ -275,7 +275,7 @@ NULL
 #' levels "PS" for poorly segmented and "WS" for well segmented.
 #'
 #' The raw data used in the paper can be found at the Biomedcentral website.
-#' Versions of caret < 4.98 contained the original data. The version now
+#' Versions of terac < 4.98 contained the original data. The version now
 #' contained in \code{segmentationData} is modified. First, several discrete
 #' versions of some of the predictors (with the suffix "Status") were removed.
 #' Second, there are several skewed predictors with minimum values of zero
@@ -285,7 +285,7 @@ NULL
 #' \code{TotalIntenCh2}.
 #'
 #' A binary version of the original data is at
-#' \url{http://topepo.github.io/caret/segmentationOriginal.RData}.
+#' \url{http://topepo.github.io/terac/segmentationOriginal.RData}.
 #'
 #'
 #' @name segmentationData
