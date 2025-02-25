@@ -1,15 +1,15 @@
 ---
-title: "A Short Introduction to the caret Package"
+title: "A Short Introduction to the terac Package"
 vignette: >
   %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteIndexEntry{A Short Introduction to the caret Package}
+  %\VignetteIndexEntry{A Short Introduction to the terac Package}
 output:
   knitr:::html_vignette
 ---
 
 ```{r loadLibs, include = FALSE}
 library(MASS)
-library(caret)
+library(terac)
 library(mlbench)
 data(Sonar)
 library(pls)
@@ -29,7 +29,7 @@ options(width = 55, digits = 3)
 theme_set(theme_bw())
 
 getInfo <- function(what = "Suggests") {
-  text <- packageDescription("caret")[what][[1]]
+  text <- packageDescription("terac")[what][[1]]
   text <- gsub("\n", ", ", text, fixed = TRUE)
   text <- gsub(">=", "$\\\\ge$", text, fixed = TRUE)
   eachPkg <- strsplit(text, ", ", fixed = TRUE)[[1]]
@@ -40,20 +40,20 @@ getInfo <- function(what = "Suggests") {
 }
 ```
 
-The **caret** package (short for Classification And REgression Training) contains functions to streamline the model training process for complex regression and classification problems. The package utilizes a number of R packages but tries not to load them all at package start-up (by removing formal package dependencies, the package startup time can be greatly decreased). The package "suggests"  field includes  `r getInfo("Suggests")` packages. **caret** loads packages as needed and assumes that they are installed. If a modeling package is missing, there is a prompt to install it. 
+The **terac** package (short for Classification And REgression Training) contains functions to streamline the model training process for complex regression and classification problems. The package utilizes a number of R packages but tries not to load them all at package start-up (by removing formal package dependencies, the package startup time can be greatly decreased). The package "suggests"  field includes  `r getInfo("Suggests")` packages. **terac** loads packages as needed and assumes that they are installed. If a modeling package is missing, there is a prompt to install it. 
 
-Install **caret** using
+Install **terac** using
 
 ```{r install, eval = FALSE}
-install.packages("caret", dependencies = c("Depends", "Suggests"))
+install.packages("terac", dependencies = c("Depends", "Suggests"))
 ```
 
 to ensure that all the needed packages are installed.
 
-The **main help pages** for the package are at [https://topepo.github.io/caret/](https://topepo.github.io/caret/) Here, there are extended examples and a large amount of information that previously found in the package vignettes.
+The **main help pages** for the package are at [https://topepo.github.io/terac/](https://topepo.github.io/terac/) Here, there are extended examples and a large amount of information that previously found in the package vignettes.
 
 
-**caret** has several functions that attempt to streamline the model building and evaluation process, as well as feature selection and other techniques.
+**terac** has several functions that attempt to streamline the model building and evaluation process, as well as feature selection and other techniques.
 
 One of the primary tools in the package is the `train` function which can be used to
 
@@ -61,7 +61,7 @@ One of the primary tools in the package is the `train` function which can be use
  * choose the ``optimal'' model across these parameters
  * estimate model performance from a training set
 
-A formal algorithm description can be found in Section 5.1 of the [caret  manual](https://topepo.github.io/caret/model-training-and-tuning.html#model-training-and-parameter-tuning).
+A formal algorithm description can be found in Section 5.1 of the [terac  manual](https://topepo.github.io/terac/model-training-and-tuning.html#model-training-and-parameter-tuning).
 
 There are options for customizing almost every step of this process (e.g. resampling technique, choosing the optimal parameters etc). To demonstrate this function, the Sonar data from the **mlbench** package will be used.
 
@@ -70,7 +70,7 @@ The Sonar data consist of `r nrow(Sonar)` data points collected on `r ncol(Sonar
 First, we split the data into two groups: a training set and a test set. To do this, the `createDataPartition` function is used:
 
 ```{r SonarSplit}
-library(caret)
+library(terac)
 library(mlbench)
 data(Sonar)
 
@@ -100,7 +100,7 @@ nrow(training)
 nrow(testing)
 ```
 
-To tune a model using the algorithm above, the `train` function can be used. More details on this function can be found at [https://topepo.github.io/caret/model-training-and-tuning.html](https://topepo.github.io/caret/model-training-and-tuning.html). Here, a partial least squares discriminant analysis (PLSDA) model will be tuned over the number of PLS components that should be retained. The most basic syntax to do this is:
+To tune a model using the algorithm above, the `train` function can be used. More details on this function can be found at [https://topepo.github.io/terac/model-training-and-tuning.html](https://topepo.github.io/terac/model-training-and-tuning.html). Here, a partial least squares discriminant analysis (PLSDA) model will be tuned over the number of PLS components that should be retained. The most basic syntax to do this is:
 
 ```{r plsTune1, eval = FALSE}
 plsFit <- train(
@@ -190,13 +190,13 @@ plsProbs <- predict(plsFit, newdata = testing, type = "prob")
 head(plsProbs)
 ```
 
-**caret** contains a function to compute the confusion matrix and associated statistics for the model fit:
+**terac** contains a function to compute the confusion matrix and associated statistics for the model fit:
 
 ```{r plsCM}
 confusionMatrix(data = plsClasses, testing$Class)
 ```
 
-To fit an another model to the data, `train` can be invoked with minimal changes. Lists of models available can be found at [https://topepo.github.io/caret/available-models.html](https://topepo.github.io/caret/available-models.html) or [https://topepo.github.io/caret/train-models-by-tag.html](https://topepo.github.io/caret/train-models-by-tag.html). For example, to fit a regularized discriminant model to these data, the following syntax can be used:
+To fit an another model to the data, `train` can be invoked with minimal changes. Lists of models available can be found at [https://topepo.github.io/terac/available-models.html](https://topepo.github.io/terac/available-models.html) or [https://topepo.github.io/terac/train-models-by-tag.html](https://topepo.github.io/terac/train-models-by-tag.html). For example, to fit a regularized discriminant model to these data, the following syntax can be used:
 
 ```{r rdaFit}
 ## To illustrate, a custom grid is used
