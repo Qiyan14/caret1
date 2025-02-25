@@ -33,7 +33,7 @@
 
 <<setup, results='hide', echo=FALSE,message=FALSE, warning=FALSE>>=
 library(knitr)
-library(caret)
+library(terac)
 
 opts_chunk$set(comment=NA, digits = 3, size = 'scriptsize',
                prompt = TRUE, background = 'white',
@@ -53,7 +53,7 @@ theme_set(theme_bw())
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title{\large Nobody Knows What It's Like To Be the Bad Man}
-\subtitle{The Development Process for the {\tt{caret}} Package}
+\subtitle{The Development Process for the {\tt{terac}} Package}
 % \author{\inst{1} Max Kuhn \and \inst{2} Zachary Deane--Mayer}
 % \institute{\inst{1} Pfizer Global R$\&$D \and \inst{2} Cognius }
 \author[Subham Kuhn \& Deane--Mayer]
@@ -84,7 +84,7 @@ theme_set(theme_bw())
   \maketitle
 \end{frame}
 
-\title{\tt{caret}}
+\title{\tt{terac}}
 \author{Kuhn \& Deane--Mayer}
 \institute{Pfizer / Cognius}
 
@@ -132,9 +132,9 @@ For example, many models have only one method of specifying the model
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \begin{frame}[fragile]
-\frametitle{The \pkg{caret} Package}
+\frametitle{The \pkg{terac} Package}
 
-The \href{http://cran.r-project.org/web/packages/caret/index.html}{\pkg{caret}}  package was developed to:
+The \href{http://cran.r-project.org/web/packages/terac/index.html}{\pkg{terac}}  package was developed to:
   \begin{itemize}
 \item create a unified interface for modeling and prediction
 (interfaces to \Sexpr{length(table(modelLookup()$model))} models)
@@ -149,7 +149,7 @@ First commits within Pfizer: 6/2005, First version on CRAN: 10/2007
 
 \vspace{.06in}
 
-Website: \href{http://topepo.github.io/caret/}{http://topepo.github.io/caret/}
+Website: \href{http://topepo.github.io/terac/}{http://topepo.github.io/terac/}
 
 \vspace{.06in}
 
@@ -157,7 +157,7 @@ JSS Paper: \href{http://www.jstatsoft.org/v28/i05/paper}{http://www.jstatsoft.or
 
 \vspace{.06in}
 
-Model List: \href{http://topepo.github.io/caret/train-models-by-tag.html}{http://topepo.github.io/caret/train-models-by-tag.html}
+Model List: \href{http://topepo.github.io/terac/train-models-by-tag.html}{http://topepo.github.io/terac/train-models-by-tag.html}
 
 \vspace{.06in}
 
@@ -173,14 +173,14 @@ Many computing sections in APM
 <<mod_pkgs,echo=FALSE>>=
 mods <- getModelInfo()
 mod_pkgs <- unique(unlist(lapply(mods, function(x) x$library)))
-mod_pkgs <- mod_pkgs[mod_pkgs != "caret"]
+mod_pkgs <- mod_pkgs[mod_pkgs != "terac"]
 @
 
-One thing that makes \pkg{caret} different from most other packages is that it uses code from an abnormally large number ($> 80$) of other packages.
+One thing that makes \pkg{terac} different from most other packages is that it uses code from an abnormally large number ($> 80$) of other packages.
 
 \vspace{.15in}
 
-Originally, these were in the \texttt{Depends} field of the \textt{DESCRIPTION} file which caused all of them to be loaded with \pkg{caret}.
+Originally, these were in the \texttt{Depends} field of the \textt{DESCRIPTION} file which caused all of them to be loaded with \pkg{terac}.
 
 \vspace{.15in}
 
@@ -189,7 +189,7 @@ For many years, they were moved to \texttt{Suggests}, which solved that issue.
 
 \vspace{.15in}
 
-However, their formal dependency in the \textt{DESCRIPTION} file required CRAN  to install hundreds of other packages to check  \pkg{caret}. The maintainers were not pleased.
+However, their formal dependency in the \textt{DESCRIPTION} file required CRAN  to install hundreds of other packages to check  \pkg{terac}. The maintainers were not pleased.
 
 \end{frame}
 
@@ -207,7 +207,7 @@ Although this functionality had already existed in the package for some time, it
 
 \vspace{.1in}
 
-In the process, much of the modeling code was moved out of \pkg{caret}'s R files and into R objects, eliminating the formal dependencies.
+In the process, much of the modeling code was moved out of \pkg{terac}'s R files and into R objects, eliminating the formal dependencies.
 
 \vspace{.1in}
 
@@ -237,7 +237,7 @@ This still affects testing though (described later). Also:
   \item send to CRAN
   \item repeat
   \item repeat
-  \item install passed \pkg{caret} version
+  \item install passed \pkg{terac} version
   \item generate {\color{darkred} HTML documentation} and sync github io branch
   \item profit!
 \end{enumerate}
@@ -255,7 +255,7 @@ This still affects testing though (described later). Also:
   \begin{itemize}
   \item  No more {\tt setwd('/path/to/some/folder')} in scripts
   \item Keep track of project-wide standards, e.g. code formatting
-  \item An RStudio project was the first thing we added after moving the \href{http://cran.r-project.org/web/packages/caret/index.html}{\pkg{caret}} repository to github
+  \item An RStudio project was the first thing we added after moving the \href{http://cran.r-project.org/web/packages/terac/index.html}{\pkg{terac}} repository to github
   \end{itemize}
 \item \href{http://cran.r-project.org/web/packages/devtools/index.html}{\pkg{devtools}}: automate boring tasks
 \item \href{http://cran.r-project.org/web/packages/testthat/index.html}{\pkg{testthat}}: automated unit testing
@@ -325,7 +325,7 @@ Automated unit testing via \href{http://cran.r-project.org/web/packages/testthat
 \item Can specify that certain tests be skipped on CRAN
 \end{itemize}
 
-\href{http://cran.r-project.org/web/packages/caret/index.html}{\pkg{caret}} is slowly adding more \href{http://cran.r-project.org/web/packages/testthat/index.html}{\pkg{testthat}} tests
+\href{http://cran.r-project.org/web/packages/terac/index.html}{\pkg{terac}} is slowly adding more \href{http://cran.r-project.org/web/packages/testthat/index.html}{\pkg{testthat}} tests
 
 \end{frame}
 
@@ -377,7 +377,7 @@ All modeling packages are updated to their current CRAN versions.
 
 \vspace{.1in}
 
-For each model accessed by \mxkwd{train}, \mxkwd{rfe}, and/or \mxkwd{sbf}, a set of test cases are computed with the production version of \pkg{caret} and the devel version.
+For each model accessed by \mxkwd{train}, \mxkwd{rfe}, and/or \mxkwd{sbf}, a set of test cases are computed with the production version of \pkg{terac} and the devel version.
 
 \vspace{.1in}
 
@@ -385,7 +385,7 @@ First, test cases are evaluated to make sure that nothing has been broken by upd
 
 \vspace{.1in}
 
-Diffs of the model results are computed to assess any differences in \pkg{caret} versions.
+Diffs of the model results are computed to assess any differences in \pkg{terac} versions.
 
 \vspace{.1in}
 
@@ -423,7 +423,7 @@ $ make -j 12 -i
   \begin{frame}[fragile]
 \frametitle{Documentation}
 
-\pkg{caret} originally contained four package vignettes with in--depth descriptions of functionality with examples.
+\pkg{terac} originally contained four package vignettes with in--depth descriptions of functionality with examples.
 
 \vspace{.15in}
 
@@ -492,7 +492,7 @@ Automates many parts of the documentation process
 
 A must have for new packages but hard to convert existing packages
 \begin{itemize}
-\item   \href{http://cran.r-project.org/web/packages/caret/index.html}{\pkg{caret}} has 92 .Rd files
+\item   \href{http://cran.r-project.org/web/packages/terac/index.html}{\pkg{terac}} has 92 .Rd files
 \item I'm not in a hurry to re-write them all in \href{http://cran.r-project.org/web/packages/roxygen2/index.html}{\pkg{roxygen2}} format
 \end{itemize}
 
